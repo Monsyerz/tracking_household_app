@@ -11,4 +11,28 @@
         <p>Track monthly household income, expenses, and remaining cash flow.</p>
     </main>
 </body>
+
+<form method="POST" action="/calculate">
+    <h2>Household Members</h2>
+
+    <label>Name</label>
+    <input type="text" name="person_name" required>
+
+    <label>Weekly income</label>
+    <input type="number" name="weekly_income" step="0.01" required>
+
+    <h2>Monthly Expenses</h2>
+
+    <label>Rent / Housing</label>
+    <input type="number" name="rent" step="0.01" required>
+
+    <label>Food</label>
+    <input type="number" name="food" step="0.01" required>
+
+    <label>Car</label>
+    <input type="number" name="car" step="0.01" required>
+
+    <button type="submit">Calculate</button>
+</form>
+
 </html>

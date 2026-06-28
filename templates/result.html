@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <h1>Budget Summary</h1>
+
+        <p>Total monthly income: ${{ "%.2f"|format(total_income) }}</p>
+        <p>Total monthly expenses: ${{ "%.2f"|format(total_expenses) }}</p>
+        <p>Money left: ${{ "%.2f"|format(money_left) }}</p>
+
+        <a href="/">Calculate again</a>
+    </main>
+</body>
+</html>
