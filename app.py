@@ -1,29 +1,40 @@
 from flask import Flask, render_template, request
-from models import Person, Expense, HouseholdBudget
-from calculator import calculate_total_income, calculate_total_expenses, calculate_money_left
+
+from calculator import calculate_total_expenses, calculate_total_income, calculate_money_left
+from models import Expense, HouseholdBudget, Person
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    """Display the home page."""
+    """Display the budget form."""
     return render_template("index.html")
 
 
 @app.route("/calculate", methods=["POST"])
 def calculate():
-    """Calculate budget summary from form data."""
+    """Create a budget from form data and display calculated results."""
     budget = HouseholdBudget()
 
     person_name = request.form["person_name"]
     weekly_income = float(request.form["weekly_income"])
-
     budget.people.append(Person(person_name, weekly_income))
 
-    budget.expenses.append(Expense("Rent / Housing", float(request.form["rent"])))
-    budget.expenses.append(Expense("Food", float(request.form["food"])))
-    budget.expenses.append(Expense("Car", float(request.form["car"])))
+    expense_categories = {
+        "Rent / Housing": "rent",
+        "Car lease": "car_lease",
+        "Internet": "internet",
+        "Phone": "phone",
+        "Electricity": "electricity",
+        "Gas": "gas",
+        "Water": "water",
+        "Food": "food",
+    }
+
+    for category, field_name in expense_categories.items():
+        amount = float(request.form[field_name])
+        budget.expenses.append(Expense(category, amount))
 
     total_income = calculate_total_income(budget.people)
     total_expenses = calculate_total_expenses(budget.expenses)
@@ -31,6 +42,8 @@ def calculate():
 
     return render_template(
         "result.html",
+        people=budget.people,
+        expenses=budget.expenses,
         total_income=total_income,
         total_expenses=total_expenses,
         money_left=money_left,
