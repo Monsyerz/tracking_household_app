@@ -17,9 +17,12 @@ def calculate():
     """Create a budget from form data and display calculated results."""
     budget = HouseholdBudget()
 
-    person_name = request.form["person_name"]
-    weekly_income = float(request.form["weekly_income"])
-    budget.people.append(Person(person_name, weekly_income))
+    person_names = request.form.getlist("person_name")
+    weekly_incomes = request.form.getlist("weekly_income")
+
+    for person_name, weekly_income in zip(person_names, weekly_incomes):
+        if person_name.strip():
+            budget.people.append(Person(person_name.strip(), float(weekly_income)))
 
     expense_categories = {
         "Rent / Housing": "rent",
