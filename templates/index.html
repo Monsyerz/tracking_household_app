@@ -2,37 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Household Budget Tracker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <main class="container">
-        <h1>Household Budget Tracker</h1>
-        <p>Track monthly household income, expenses, and remaining cash flow.</p>
+        <section class="page-header">
+            <p class="eyebrow">Monthly cash flow planner</p>
+            <h1>Household Budget Tracker</h1>
+            <p>Enter household income and fixed monthly expenses to see how much money is left after bills.</p>
+        </section>
+
+        <form class="budget-form" method="POST" action="/calculate">
+            <section class="form-section">
+                <h2>Household Member</h2>
+
+                <div class="form-grid">
+                    <label>
+                        Name
+                        <input type="text" name="person_name" placeholder="Kacper" required>
+                    </label>
+
+                    <label>
+                        Weekly income
+                        <input type="number" name="weekly_income" min="0" step="0.01" placeholder="1000" required>
+                    </label>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h2>Fixed Monthly Expenses</h2>
+
+                <div class="form-grid">
+                    <label>
+                        Rent / Housing
+                        <input type="number" name="rent" min="0" step="0.01" placeholder="1800" required>
+                    </label>
+
+                    <label>
+                        Car lease
+                        <input type="number" name="car_lease" min="0" step="0.01" placeholder="450" required>
+                    </label>
+
+                    <label>
+                        Internet
+                        <input type="number" name="internet" min="0" step="0.01" placeholder="70" required>
+                    </label>
+
+                    <label>
+                        Phone
+                        <input type="number" name="phone" min="0" step="0.01" placeholder="90" required>
+                    </label>
+
+                    <label>
+                        Electricity
+                        <input type="number" name="electricity" min="0" step="0.01" placeholder="120" required>
+                    </label>
+
+                    <label>
+                        Gas
+                        <input type="number" name="gas" min="0" step="0.01" placeholder="60" required>
+                    </label>
+
+                    <label>
+                        Water
+                        <input type="number" name="water" min="0" step="0.01" placeholder="45" required>
+                    </label>
+
+                    <label>
+                        Food
+                        <input type="number" name="food" min="0" step="0.01" placeholder="700" required>
+                    </label>
+                </div>
+            </section>
+
+            <button class="primary-button" type="submit">Calculate Budget</button>
+        </form>
     </main>
 </body>
-
-<form method="POST" action="/calculate">
-    <h2>Household Members</h2>
-
-    <label>Name</label>
-    <input type="text" name="person_name" required>
-
-    <label>Weekly income</label>
-    <input type="number" name="weekly_income" step="0.01" required>
-
-    <h2>Monthly Expenses</h2>
-
-    <label>Rent / Housing</label>
-    <input type="number" name="rent" step="0.01" required>
-
-    <label>Food</label>
-    <input type="number" name="food" step="0.01" required>
-
-    <label>Car</label>
-    <input type="number" name="car" step="0.01" required>
-
-    <button type="submit">Calculate</button>
-</form>
-
 </html>

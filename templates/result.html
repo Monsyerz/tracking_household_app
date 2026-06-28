@@ -2,18 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <main class="container">
-        <h1>Budget Summary</h1>
+        <section class="page-header">
+            <p class="eyebrow">Budget summary</p>
+            <h1>Household Monthly Report</h1>
+            <p>Review estimated income, fixed expenses, and remaining monthly cash flow.</p>
+        </section>
 
-        <p>Total monthly income: ${{ "%.2f"|format(total_income) }}</p>
-        <p>Total monthly expenses: ${{ "%.2f"|format(total_expenses) }}</p>
-        <p>Money left: ${{ "%.2f"|format(money_left) }}</p>
+        <section class="summary-grid">
+            <article class="summary-card">
+                <span>Total monthly income</span>
+                <strong>${{ "%.2f"|format(total_income) }}</strong>
+            </article>
 
-        <a href="/">Calculate again</a>
+            <article class="summary-card">
+                <span>Total monthly expenses</span>
+                <strong>${{ "%.2f"|format(total_expenses) }}</strong>
+            </article>
+
+            <article class="summary-card highlight">
+                <span>Money left</span>
+                <strong>${{ "%.2f"|format(money_left) }}</strong>
+            </article>
+        </section>
+
+        <section class="details-grid">
+            <article class="detail-panel">
+                <h2>Household Members</h2>
+                <ul class="data-list">
+                    {% for person in people %}
+                        <li>
+                            <span>{{ person.name }}</span>
+                            <strong>${{ "%.2f"|format(person.weekly_income) }} weekly</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </article>
+
+            <article class="detail-panel">
+                <h2>Monthly Expenses</h2>
+                <ul class="data-list">
+                    {% for expense in expenses %}
+                        <li>
+                            <span>{{ expense.category }}</span>
+                            <strong>${{ "%.2f"|format(expense.amount) }}</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </article>
+        </section>
+
+        <a class="secondary-link" href="/">Calculate again</a>
     </main>
 </body>
 </html>
