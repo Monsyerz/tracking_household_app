@@ -8,9 +8,10 @@ Household Budget Tracker is a modular command-line Python application for estima
 - Estimate monthly income from weekly income
 - Record fixed monthly expenses in common household categories
 - Add custom expense categories
+- Set a non-negative monthly savings goal
 - Calculate total household income and total expenses
-- Calculate the money remaining after expenses
-- Validate numeric input in the command-line workflow
+- Calculate the money remaining after expenses and planned savings
+- Validate names, household size, numeric amounts, and yes/no answers
 
 The application processes one budget during each run. It does not currently save or load financial data.
 
@@ -43,7 +44,7 @@ From the project directory, run:
 python main.py
 ```
 
-Follow the prompts to enter household members, weekly income, fixed expenses, and any custom expense categories.
+Follow the prompts to enter household members, weekly income, fixed expenses, custom expense categories, and a monthly savings goal.
 
 ## Technologies
 
@@ -56,8 +57,7 @@ Follow the prompts to enter household members, weekly income, fixed expenses, an
 The following features are planned and are not implemented yet:
 
 - Saving and loading budget data
-- Savings goals
-- Stronger input validation
+- Additional validation for more input edge cases
 - Automated tests
 - Monthly summaries
 - CSV export
