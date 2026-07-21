@@ -1,69 +1,68 @@
 # Household Budget Tracker
 
-Household Budget Tracker is a simple Python application designed to help track household income, fixed expenses, savings, and monthly cash flow.
+Household Budget Tracker is a modular command-line Python application for estimating a household's monthly budget. It collects income and expense information, performs the calculations in separate modules, and prints a clear summary. The repository also contains a basic Flask interface that reuses the calculation modules.
 
-The purpose of this project is to organize personal finances in a clear and practical way. The app focuses on everyday household budget categories and helps users better understand how much money is left after regular monthly expenses.
+## Current Features
 
-## Features
+- Add multiple household members and their weekly income
+- Estimate monthly income from weekly income
+- Record fixed monthly expenses in common household categories
+- Add custom expense categories
+- Calculate total household income and total expenses
+- Calculate the money remaining after expenses
+- Validate numeric input in the command-line workflow
 
-- Track household members and their weekly income
-- Convert weekly income into estimated monthly income
-- Add and organize fixed monthly expenses
-- Track monthly savings
-- Calculate total household income
-- Calculate total expenses
-- Calculate remaining monthly money after expenses and savings
+The application processes one budget during each run. It does not currently save or load financial data.
 
-## Budget Categories
+## Project Structure
 
-The application is designed to support common household budget categories such as:
+```text
+tracking_household_app/
+|-- main.py
+|-- input_handler.py
+|-- models.py
+|-- calculator.py
+|-- report.py
+|-- app.py
+|-- templates/
+|   |-- index.html
+|   `-- result.html
+|-- static/
+|   |-- style.css
+|   `-- script.js
+|-- requirements.txt
+|-- HouseholdBudgetTracker.spec
+`-- README.md
+```
 
-- Income
-- Food
-- Auto expenses
-- Rent / Housing
-- Utilities
-- Baby expenses
-- Savings
-- Custom expense categories
+## Running the Command-Line Application
 
-## Tech Stack
+From the project directory, run:
+
+```bash
+python main.py
+```
+
+Follow the prompts to enter household members, weekly income, fixed expenses, and any custom expense categories.
+
+## Technologies
 
 - Python
+- Flask
+- HTML, CSS, and JavaScript for the basic web interface
 
-## Project Goals
+## Planned Improvements
 
-This project was created as a portfolio project to practice Python programming and build a real-life budgeting tool.
+The following features are planned and are not implemented yet:
 
-The main goals of this project are:
-
-- Improve Python skills
-- Practice working with classes and modules
-- Practice working with user input and data
-- Practice Git/GitHub workflow
-- Organize financial records in a simple structure
-- Build a project that can be expanded over time
-
-## Learning Purpose
-
-This project was created to practice Python programming, project structure, Git/GitHub workflow, and AI-assisted software development.
-
-## Future Improvements
-
-- Save data to a file
-- Add CSV or Excel export
-- Add monthly summaries
-- Add charts and reports
-- Add stock/investment contribution tracking
-- Add a simple graphical interface
-- Add database storage
-- Add recurring expenses
+- Saving and loading budget data
+- Savings goals
+- Stronger input validation
+- Automated tests
+- Monthly summaries
+- CSV export
+- Charts or a more complete graphical interface
 
 ## Project Status
 
-This project is currently in development.
-
-## Author
-
-Idea by Kacper Popek.  
-Created by Kacper Popek with support from OpenAI Codex.
+This is an active learning and portfolio project.
