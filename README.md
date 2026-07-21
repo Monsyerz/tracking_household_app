@@ -12,8 +12,11 @@ Household Budget Tracker is a modular command-line Python application for estima
 - Calculate total household income and total expenses
 - Calculate the money remaining after expenses and planned savings
 - Validate names, household size, numeric amounts, and yes/no answers
+- Save the current budget to a local JSON file
+- Load an existing budget without re-entering its details
+- Handle missing or invalid saved data without crashing
 
-The application processes one budget during each run. It does not currently save or load financial data.
+The application works with one current budget stored in `data/current_budget.json`.
 
 ## Project Structure
 
@@ -24,6 +27,9 @@ tracking_household_app/
 |-- models.py
 |-- calculator.py
 |-- report.py
+|-- storage.py
+|-- data/
+|   `-- .gitkeep
 |-- app.py
 |-- templates/
 |   |-- index.html
@@ -44,7 +50,9 @@ From the project directory, run:
 python main.py
 ```
 
-Follow the prompts to enter household members, weekly income, fixed expenses, custom expense categories, and a monthly savings goal.
+Choose whether to load the existing budget or create a new one. A newly created budget is saved automatically to `data/current_budget.json`.
+
+The generated JSON file contains user-entered financial data and is ignored by Git. Do not commit it to the repository.
 
 ## Technologies
 
@@ -56,7 +64,6 @@ Follow the prompts to enter household members, weekly income, fixed expenses, cu
 
 The following features are planned and are not implemented yet:
 
-- Saving and loading budget data
 - Additional validation for more input edge cases
 - Automated tests
 - Monthly summaries
