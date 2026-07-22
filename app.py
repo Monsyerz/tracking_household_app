@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, url_for
 
 from calculator import calculate_total_expenses, calculate_total_income, calculate_money_left
 from models import Expense, HouseholdBudget, Person
@@ -12,9 +12,12 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/calculate", methods=["POST"])
+@app.route("/calculate", methods=["GET", "POST"])
 def calculate():
     """Create a budget from form data and display calculated results."""
+    if request.method == "GET":
+        return redirect(url_for("index"))
+
     budget = HouseholdBudget()
 
     person_names = request.form.getlist("person_name")
