@@ -1,11 +1,9 @@
-from input_handler import create_household_budget
-from report import print_budget_report
+from menu import run_application
 
 
-def main():
+def main() -> None:
     """Run the household budget tracker application."""
-    budget = create_household_budget()
-    print_budget_report(budget)
+    run_application()
 
 
 if __name__ == "__main__":
