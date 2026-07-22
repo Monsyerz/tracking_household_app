@@ -64,14 +64,29 @@ The generated JSON file contains user-entered financial data and is ignored by G
 
 ## Running the Web Interface
 
-Install the required package and start the Flask server from the project directory:
+Python must be installed before starting the web interface. Confirm that it is available:
+
+```bash
+python --version
+```
+
+From the project directory, install the required packages:
 
 ```bash
 python -m pip install -r requirements.txt
+```
+
+This command installs Flask and its dependencies. It does not start the application, and it normally only needs to be run once after downloading the project or changing environments.
+
+Start the Flask development server separately:
+
+```bash
 python app.py
 ```
 
-Open `http://127.0.0.1:5000/` in a browser and keep the terminal running. The HTML templates must be served by Flask; opening `templates/index.html` directly or using a static preview server will not run the budget calculation route.
+Wait until the terminal displays `Running on http://127.0.0.1:5000`, then open that address in a browser. Keep the terminal running while using the application. Press `Ctrl+C` in the terminal when you want to stop the server.
+
+The HTML templates must be served by Flask. Opening `templates/index.html` directly or using VS Code Live Server will not run the budget calculation route or process the Jinja template expressions.
 
 ## Technologies
 
