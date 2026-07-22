@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Household Budget Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <main class="container">
-        <section class="page-header">
-            <p class="eyebrow">Monthly cash flow planner</p>
+    <main class="budget-page">
+        <header class="budget-header">
+            <p class="budget-kicker">Monthly cash flow planner</p>
             <h1>Household Budget Tracker</h1>
             <p>Enter household income and fixed monthly expenses to see how much money is left after bills.</p>
-        </section>
+        </header>
 
         <form class="budget-form" method="POST" action="/calculate">
-            <section class="form-section">
-                <div class="section-heading">
+            <section class="household-section">
+                <div class="household-header">
                     <h2>Household Members</h2>
                     <button class="secondary-button" type="button" id="add-member-button">Add Member</button>
                 </div>
 
-                <div class="member-list" id="member-list">
-                    <div class="member-row">
+                <div class="household-members" id="member-list">
+                    <div class="household-member">
                         <label>
                             Name
                             <input type="text" name="person_name" placeholder="Household member name" required>
@@ -36,10 +36,10 @@
                 </div>
             </section>
 
-            <section class="form-section">
+            <section class="expense-section">
                 <h2>Fixed Monthly Expenses</h2>
 
-                <div class="form-grid">
+                <div class="expense-fields">
                     <label>
                         Rent / Housing
                         <input type="number" name="rent" min="0" step="0.01" placeholder="0.00" required>
@@ -85,6 +85,6 @@
             <button class="primary-button" type="submit">Calculate Budget</button>
         </form>
     </main>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="../static/script.js"></script>
 </body>
 </html>

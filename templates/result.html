@@ -4,37 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <main class="container">
-        <section class="page-header">
-            <p class="eyebrow">Budget summary</p>
+    <main class="report-page">
+        <header class="report-header">
+            <p class="report-kicker">Budget summary</p>
             <h1>Household Monthly Report</h1>
             <p>Review estimated income, fixed expenses, and remaining monthly cash flow.</p>
-        </section>
+        </header>
 
-        <section class="summary-grid">
-            <article class="summary-card">
+        <section class="report-summary">
+            <article class="summary-income">
                 <span>Total monthly income</span>
                 <strong>${{ "%.2f"|format(total_income) }}</strong>
             </article>
 
-            <article class="summary-card">
+            <article class="summary-expenses">
                 <span>Total monthly expenses</span>
                 <strong>${{ "%.2f"|format(total_expenses) }}</strong>
             </article>
 
-            <article class="summary-card highlight">
+            <article class="summary-remaining">
                 <span>Money left</span>
                 <strong>${{ "%.2f"|format(money_left) }}</strong>
             </article>
         </section>
 
-        <section class="details-grid">
-            <article class="detail-panel">
+        <section class="report-details">
+            <article class="member-summary">
                 <h2>Household Members</h2>
-                <ul class="data-list">
+                <ul class="member-breakdown">
                     {% for person in people %}
                         <li>
                             <span>{{ person.name }}</span>
@@ -44,9 +44,9 @@
                 </ul>
             </article>
 
-            <article class="detail-panel">
+            <article class="expense-summary">
                 <h2>Monthly Expenses</h2>
-                <ul class="data-list">
+                <ul class="expense-breakdown">
                     {% for expense in expenses %}
                         <li>
                             <span>{{ expense.category }}</span>
@@ -57,7 +57,7 @@
             </article>
         </section>
 
-        <a class="secondary-link" href="/">Calculate again</a>
+        <a class="report-return-link" href="/">Calculate again</a>
     </main>
 </body>
 </html>

@@ -3,7 +3,7 @@ const addMemberButton = document.querySelector("#add-member-button");
 
 function createMemberRow() {
     const row = document.createElement("div");
-    row.className = "member-row";
+    row.className = "household-member";
 
     row.innerHTML = `
         <label>
