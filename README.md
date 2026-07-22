@@ -62,6 +62,17 @@ The application warns before replacing a budget or exiting when unsaved changes 
 
 The generated JSON file contains user-entered financial data and is ignored by Git. Do not commit it to the repository.
 
+## Running the Web Interface
+
+Install the required package and start the Flask server from the project directory:
+
+```bash
+python -m pip install -r requirements.txt
+python app.py
+```
+
+Open `http://127.0.0.1:5000/` in a browser and keep the terminal running. The HTML templates must be served by Flask; opening `templates/index.html` directly or using a static preview server will not run the budget calculation route.
+
 ## Technologies
 
 - Python

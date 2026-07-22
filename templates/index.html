@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Household Budget Tracker</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <main class="budget-page">
@@ -14,7 +14,7 @@
             <p>Enter household income and fixed monthly expenses to see how much money is left after bills.</p>
         </header>
 
-        <form class="budget-form" method="POST" action="/calculate">
+        <form class="budget-form" method="POST" action="{{ url_for('calculate') }}">
             <section class="household-section">
                 <div class="household-header">
                     <h2>Household Members</h2>
@@ -85,6 +85,6 @@
             <button class="primary-button" type="submit">Calculate Budget</button>
         </form>
     </main>
-    <script src="../static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

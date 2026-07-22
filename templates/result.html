@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Result</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <main class="report-page">
@@ -57,7 +57,7 @@
             </article>
         </section>
 
-        <a class="report-return-link" href="/">Calculate again</a>
+        <a class="report-return-link" href="{{ url_for('index') }}">Calculate again</a>
     </main>
 </body>
 </html>
